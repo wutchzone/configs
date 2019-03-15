@@ -1,0 +1,27 @@
+#!/bin/bash
+
+randomSymbol="0"
+finalString=""
+
+function randomSymbols(){
+    randomSymbol=${symbols[(($RANDOM % 16))]}
+}
+
+
+symbols=('0' '1' '2' '3' '4' '5' '6' '7' '8' '9' 'A' 'B' 'C' 'D' 'E' 'F')
+
+randomSymbols
+finalString="$randomSymbol"
+randomSymbols
+finalString="$finalString$randomSymbol"
+
+for i in {0..5}
+do
+    randomSymbols
+    finalString="$finalString:$randomSymbol"
+    randomSymbols
+    finalString="$finalString$randomSymbol"
+done
+
+echo "$finalString"
+exit 0
