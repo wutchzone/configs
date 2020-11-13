@@ -202,6 +202,8 @@ nnoremap <right> :bn<CR>
 " nerdtree
 map <C-o> :NERDTreeToggle<CR>
 
+nnoremap <Leader>b :buffers<CR>:buffer<Space>
+
 """""""""""""""
 " coc defalts "
 " """""""""""""
