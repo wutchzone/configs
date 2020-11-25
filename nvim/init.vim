@@ -7,23 +7,26 @@ let mapleader = "\<Space>"
 set nocompatible
 
 call plug#begin("~/.vim/plugged")
-" Plugin Section
-" Plug 'fatih/vim-go'
-Plug 'neoclide/coc.nvim'
+" UI things I guess
 Plug 'itchyny/lightline.vim'
+Plug 'morhetz/gruvbox'
 Plug 'machakann/vim-highlightedyank'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
 " Fuzzy finder
 Plug 'airblade/vim-rooter'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 Plug 'rust-lang/rust.vim'
+" Plug 'fatih/vim-go'
+Plug 'neoclide/coc.nvim'
 
+" Navigation
 Plug 'preservim/nerdtree'
 call plug#end()
+autocmd vimenter * ++nested colorscheme gruvbox
 
 " Lightline
 let g:lightline = {
@@ -92,10 +95,10 @@ set wildmenu
 set wildmode=list:longest
 set wildignore=.hg,.svn,*~,*.png,*.jpg,*.gif,*.settings,Thumbs.db,*.min.js,*.swp,publish/*,intermediate/*,*.o,*.hi,Zend,vendor
 
-" Use wide tabs
-set shiftwidth=8
-set softtabstop=8
-set tabstop=8
+" Use smaller tabs
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
 set noexpandtab
 
 " Wrapping options
@@ -141,7 +144,7 @@ set diffopt+=iwhite " No whitespace in vimdiff
 " Make diffing better: https://vimways.org/2018/the-power-of-diff/
 set diffopt+=algorithm:patience
 set diffopt+=indent-heuristic
-" set colorcolumn=80 " and give me a colored column
+set colorcolumn=80 " and give me a colored column
 set showcmd " Show (partial) command in status line.
 set mouse=a " Enable mouse usage (all modes) in terminals
 set shortmess+=c " don't give |ins-completion-menu| messages.
@@ -156,6 +159,13 @@ set listchars=nbsp:¬,extends:»,precedes:«,trail:•
 " ; as :
 nnoremap ; :
 
+" remap esc
+inoremap <C-j> <Esc>
+
+" better navigation
+"nnoremap J 10j
+"nnoremap K 10k
+
 " Ctrl+h to stop searching
 vnoremap <C-h> :nohlsearch<cr>
 nnoremap <C-h> :nohlsearch<cr>
@@ -165,7 +175,7 @@ map H ^
 map L $
 
 " <leader>s for Rg search
-noremap <leader>s :Rg
+noremap <leader>s :Rg<cr>
 let g:fzf_layout = { 'down': '~20%' }
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
@@ -204,9 +214,9 @@ map <C-o> :NERDTreeToggle<CR>
 
 nnoremap <Leader>b :buffers<CR>:buffer<Space>
 
-"""""""""""""""
-" coc defalts "
-" """""""""""""
+" =============================================================================
+" # COC Defaults
+" =============================================================================
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
@@ -351,7 +361,7 @@ nnoremap <silent> <space>f  :call CocAction('format')<cr>
 nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
 
 " Search workspace symbols.
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+"nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
 
 " Implement methods for trait
 nnoremap <silent> <space>i  :call CocActionAsync('codeAction', '', 'Implement missing members')<cr>
