@@ -1,13 +1,14 @@
 {
 	"languageserver": {
 		"ccls": {
-			"command": "ccls",
+			"command": "/snap/bin/ccls",
 			"filetypes": [
 				"c",
 				"cc",
 				"cpp",
 				"c++",
 				"objc",
+				"cuda",
 				"objcpp"
 			],
 			"rootPatterns": [

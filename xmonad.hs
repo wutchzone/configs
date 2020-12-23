@@ -1,7 +1,7 @@
 -- imports
 import XMonad
 import Data.Monoid
-import System.Exit
+port System.Exit
 import XMonad.Util.SpawnOnce
 import XMonad.Util.Run
 import XMonad.Hooks.ManageDocks
@@ -18,7 +18,6 @@ myFocusFollowsMouse = True
 -- Whether clicking on a window to focus also passes the click to the window
 myClickJustFocuses :: Bool
 myClickJustFocuses = False
-
 -- Width of the window border in pixels.
 --
 myBorderWidth   = 1

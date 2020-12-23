@@ -7,7 +7,7 @@ let mapleader = "\<Space>"
 set nocompatible
 
 call plug#begin("~/.vim/plugged")
-" UI things I guess
+" UI things
 Plug 'itchyny/lightline.vim'
 Plug 'morhetz/gruvbox'
 Plug 'machakann/vim-highlightedyank'
@@ -15,16 +15,17 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
 " Fuzzy finder
-Plug 'airblade/vim-rooter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
+" Language server
+Plug 'neoclide/coc.nvim'
 Plug 'rust-lang/rust.vim'
 " Plug 'fatih/vim-go'
-Plug 'neoclide/coc.nvim'
 
 " Navigation
 Plug 'preservim/nerdtree'
+Plug 'airblade/vim-rooter'
 call plug#end()
 autocmd vimenter * ++nested colorscheme gruvbox
 
@@ -99,7 +100,12 @@ set wildignore=.hg,.svn,*~,*.png,*.jpg,*.gif,*.settings,Thumbs.db,*.min.js,*.swp
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
-set noexpandtab
+set expandtab
+
+" in makefiles, don't expand tabs to spaces, since actual tab characters are
+" needed, and have indentation at 8 chars to be sure that all indents are tabs
+" (despite the mappings later):
+autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
 
 " Wrapping options
 set formatoptions=tc " wrap text and comments using textwidth
@@ -126,6 +132,8 @@ nnoremap ? ?\v
 nnoremap / /\v
 cnoremap %s/ %sm/
 
+" Import plugins
+source ~/.configs/nvim/plugins/bclose.vim
 " =============================================================================
 " # GUI settings
 " =============================================================================
@@ -161,10 +169,7 @@ nnoremap ; :
 
 " remap esc
 inoremap <C-j> <Esc>
-
-" better navigation
-"nnoremap J 10j
-"nnoremap K 10k
+vnoremap <C-j> <Esc>
 
 " Ctrl+h to stop searching
 vnoremap <C-h> :nohlsearch<cr>
