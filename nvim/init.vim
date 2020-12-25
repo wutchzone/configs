@@ -133,7 +133,7 @@ nnoremap / /\v
 cnoremap %s/ %sm/
 
 " Import plugins
-source ~/.configs/nvim/plugins/bclose.vim
+source ~/.config/nvim/plugins/bclose.vim
 " =============================================================================
 " # GUI settings
 " =============================================================================
