@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/wutchzone/.oh-my-zsh"
+export ZSH="/home/wutch/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -89,11 +89,9 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-alias ls='ls -lGh'
+alias ls='exa'
+alias la='exa -la'
 alias ..='cd ..'
-alias fray='ssh sedlada9@fray1.fit.cvut.cz'
-alias oc='ssh root@acruxo.sedlak.biz'
-alias sage='/Applications/SageMath/sage'
 
 export GOBIN="$(go env GOPATH)/bin"
 export GOPATH="$(go env GOPATH)"
