@@ -1,7 +1,7 @@
 {
 	"languageserver": {
 		"ccls": {
-			"command": "/snap/bin/ccls",
+			"command": "ccls",
 			"filetypes": [
 				"c",
 				"cc",

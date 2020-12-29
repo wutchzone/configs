@@ -96,3 +96,5 @@ alias ..='cd ..'
 export GOBIN="$(go env GOPATH)/bin"
 export GOPATH="$(go env GOPATH)"
 export PATH="$GOBIN:$GOPATH:$PATH"
+export EDITOR="/usr/bin/nvim"
+export BROWSER="/usr/bin/firefox"
