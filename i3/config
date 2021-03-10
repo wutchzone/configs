@@ -70,7 +70,7 @@ bindsym $mod+b workspace back_and_forth
 bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
 
 # split orientation
-bindsym $mod+Shift+Return split v
+bindsym $mod+Shift+Return split toggle 
 
 # toggle fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -239,11 +239,11 @@ exec --no-startup-id pamac-tray
 #exec --no-startup-id clipit
 #exec --no-startup-id blueman-applet
 # default layout
-exec --no-startup-id sh ~/.screenlayout/home.sh
+exec --no-startup-id sh ~/.screenlayout/dejvice.sh
 # exec_always --no-startup-id sbxkb
 exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
-exec --no-startup-id xautolock -time 10 -locker blurlock
+exec --no-startup-id xautolock -time 120 -locker blurlock
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 exec --no-startup-id unclutter -idle 5 # hide cursor after 5 seconds
