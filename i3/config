@@ -183,9 +183,9 @@ exec --no-startup-id nitrogen --restore; sleep 1; picom -b
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
-exec --no-startup-id blueman-applet
+# exec --no-startup-id blueman-applet
 # default layout
-exec --no-startup-id sh ~/.screenlayout/dejvice.sh
+exec --no-startup-id sh ~/dotfiles/screenlayout/$HOST.sh
 exec --no-startup-id start_conky_maia
 exec --no-startup-id xautolock -time 120 -locker blurlock
 exec_always --no-startup-id ff-theme-util
@@ -200,7 +200,7 @@ exec --no-startup-id unclutter -idle 5 # hide cursor after 5 seconds
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
 	i3bar_command i3bar
-	status_command i3status
+	status_command ~/dotfiles/i3/i3status.bash
 	position top
 
 	tray_output primary
