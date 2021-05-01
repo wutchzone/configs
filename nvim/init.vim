@@ -7,6 +7,9 @@ let mapleader = "\<Space>"
 set nocompatible
 
 call plug#begin("~/.vim/plugged")
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+
 " UI things
 Plug 'itchyny/lightline.vim'
 Plug 'morhetz/gruvbox'
@@ -48,7 +51,7 @@ endfunction
 autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 " Open hotkeys
-map <C-p> :Files<CR>
+" map <C-p> :Files<CR>
 nmap <leader>; :Buffers<CR>
 
 " Quick-save
@@ -219,7 +222,7 @@ nnoremap <left> :bp<CR>
 nnoremap <right> :bn<CR>
 
 " nerdtree
-map <C-o> :NERDTreeToggle<CR>
+map <C-p> :NERDTreeToggle<CR>
 
 nnoremap <Leader>b :buffers<CR>:buffer<Space>
 
