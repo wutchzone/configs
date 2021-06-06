@@ -6,9 +6,9 @@
 set $mod Mod4
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
-default_border pixel 2
-default_floating_border pixel 2
-hide_edge_borders none
+default_border pixel 0
+default_floating_border pixel 0
+hide_edge_borders yes
 focus_follows_mouse yes
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -28,9 +28,10 @@ bindsym $mod+q kill
 bindsym $mod+d exec --no-startup-id rofi -lines 5 -show drun
 bindsym $mod+Ctrl+m exec pavucontrol
 # printscreen
-bindsym Print exec xfce4-screenshooter
-#calendar
+# bindsym Print exec gnome-screenshot
+# calendar 
 bindsym F4 exec gsimplecal
+bindsym F1 exec ~/dotfiles/bins/changelayout
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -142,15 +143,13 @@ for_window [class="Xfburn"] floating enable
 #############
 # Set shut down, restart and locking features
 bindsym $mod+0 mode "$mode_system"
-set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+set $mode_system (l)ock, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id i3exit lock, mode "default"
-    bindsym s exec --no-startup-id i3exit suspend, mode "default"
-    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
-    bindsym e exec --no-startup-id i3exit logout, mode "default"
-    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
-    bindsym r exec --no-startup-id i3exit reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+    bindsym l exec --no-startup-id i3lock, mode "default"
+    bindsym s exec --no-startup-id systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot
+    bindsym Shift+s exec --no-startup-id systemctl shutdown
 
     # exit system mode: "Enter" or "Escape"
     bindsym Return mode "default"
@@ -187,12 +186,6 @@ exec --no-startup-id blueman-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id ibus-daemon --xim -d -r
 exec --no-startup-id unclutter -idle 5 # hide cursor after 5 seconds
-# default layout
-# exec --no-startup-id sh ~/dotfiles/screenlayout/$HOST.sh
-exec --no-startup-id start_conky_grey
-exec_always --no-startup-id ff-theme-util
-exec --no-startup-id ibus-daemon --xim -d -r
-exec --no-startup-id unclutter -idle 5 # hide cursor after 5 seconds
 
 ##########################
 ### Colors and theming ###
@@ -201,8 +194,8 @@ exec --no-startup-id unclutter -idle 5 # hide cursor after 5 seconds
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
 	i3bar_command i3bar
-	status_command i3status -c ~/dotfiles/i3/i3status.conf
-	position bottom
+	status_command ~/dotfiles/i3/i3status.bash
+	position top
 
 	tray_output primary
 
