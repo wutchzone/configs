@@ -122,4 +122,12 @@ alias la='exa -la'
 alias ..='cd ..'
 alias docker='sudo docker'
 
-/usr/bin/setxkbmap -option "ctrl:swapcaps"
+export GOBIN="$(go env GOPATH)/bin"
+export GOPATH="$(go env GOPATH)"
+export PATH="$GOBIN:$GOPATH:$PATH"
+export EDITOR="/usr/bin/nvim"
+export BROWSER="/usr/bin/firefox"
+source $HOME/.cargo/env
+alias pls='sudo $(fc -ln -1)'
+
+setxkbmap -layout us -option ctrl:swapcaps
