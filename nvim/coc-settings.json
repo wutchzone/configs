@@ -1,41 +1,41 @@
 {
-	"languageserver": {
-		"ccls": {
-			"command": "ccls",
-			"filetypes": [
-				"c",
-				"cc",
-				"cpp",
-				"c++",
-				"objc",
-				"cuda",
-				"objcpp"
-			],
-			"rootPatterns": [
-				".ccls",
-				"compile_commands.json",
-				".git/",
-				".hg/"
-			]
-		},
-		"rust": {
-			"command": "rust-analyzer",
-			"filetypes": [
-				"rust"
-			],
-			"rootPatterns": [
-				"Cargo.toml"
-			]
-		},
-		"go": {
-			"command": "gopls",
-			"rootPatterns": [
-				"go.mod"
-			],
-			"trace.server": "verbose",
-			"filetypes": [
-				"go"
-			]
-		}
-	}
+    "languageserver": {
+        "ccls": {
+            "command": "ccls",
+            "filetypes": [
+                "c",
+                "cc",
+                "cpp",
+                "c++",
+                "objc",
+                "cuda",
+                "objcpp"
+            ],
+            "rootPatterns": [
+                ".ccls",
+                "compile_commands.json",
+                ".git/",
+                ".hg/"
+            ]
+        },
+        "rust": {
+            "command": "rust-analyzer",
+            "filetypes": [
+                "rust"
+            ],
+            "rootPatterns": [
+                "Cargo.toml"
+            ]
+        },
+        "go": {
+            "command": "gopls",
+            "rootPatterns": [
+                "go.mod"
+            ],
+            "trace.server": "verbose",
+            "filetypes": [
+                "go"
+            ]
+        }
+    }
 }
