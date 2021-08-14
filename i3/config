@@ -9,7 +9,7 @@ set $mod Mod4
 default_border pixel 2
 default_floating_border pixel 2
 hide_edge_borders none
-# focus_follows_mouse no
+focus_follows_mouse yes
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -29,6 +29,8 @@ bindsym $mod+d exec --no-startup-id rofi -lines 5 -show drun
 bindsym $mod+Ctrl+m exec pavucontrol
 # printscreen
 bindsym Print exec xfce4-screenshooter
+#calendar
+bindsym F4 exec gsimplecal
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -181,15 +183,14 @@ exec --no-startup-id pa-applet
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore; sleep 1; picom -b
 exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
 exec --no-startup-id xfce4-power-manager
-exec --no-startup-id pamac-tray
-# exec --no-startup-id blueman-applet
+exec --no-startup-id ibus-daemon --xim -d -r
+exec --no-startup-id unclutter -idle 5 # hide cursor after 5 seconds
 # default layout
-exec --no-startup-id sh ~/dotfiles/screenlayout/$HOST.sh
-exec --no-startup-id start_conky_maia
-exec --no-startup-id xautolock -time 120 -locker blurlock
+# exec --no-startup-id sh ~/dotfiles/screenlayout/$HOST.sh
+exec --no-startup-id start_conky_grey
 exec_always --no-startup-id ff-theme-util
-exec_always --no-startup-id fix_xcursor
 exec --no-startup-id ibus-daemon --xim -d -r
 exec --no-startup-id unclutter -idle 5 # hide cursor after 5 seconds
 
@@ -200,8 +201,8 @@ exec --no-startup-id unclutter -idle 5 # hide cursor after 5 seconds
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
 	i3bar_command i3bar
-	status_command ~/dotfiles/i3/i3status.bash
-	position top
+	status_command i3status -c ~/dotfiles/i3/i3status.conf
+	position bottom
 
 	tray_output primary
 
@@ -234,13 +235,6 @@ client.unfocused        #1d2021 #1d2021 #d79921 #b16286
 client.urgent           #cc241d #cc241d #ffffff #cc241d
 client.placeholder      #000000 #0C0C0C #FFFFFF #000000 
 client.background       #1d2021
-#client.focused          #665c54 #665c54 #eddbb2 #2e9ef4   #665c54
-#client.focused_inactive #282828 #5f676a #ffffff #484e50   #5f676a
-#client.unfocused        #3c3836 #3c3836 #a89984 #292d2e   #222222
-#client.urgent           #cc241d #cc241d #ebdbb2 #cc241d   #cc241d
-#client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
-#client.background       #ffffff
-
 
 #############################
 ### settings for i3-gaps: ###
@@ -251,9 +245,9 @@ gaps inner 7
 gaps outer -2
 
 # Smart gaps (gaps used if only more than one container on the workspace)
-# smart_gaps on
+smart_gaps on
 
 # Smart borders (draw borders around container only if it is not the only container on this workspace) 
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
-# smart_borders on
+smart_borders no_gaps
 
