@@ -1,0 +1,7 @@
+configuration {
+    modi: "drun,ssh,combi";
+    sidebar-mode: true;
+    combi-modi: "window,drun,ssh";
+    terminal: "/usr/bin/alacritty";
+}
+@theme "/usr/share/rofi/themes/gruvbox-dark-soft.rasi"
