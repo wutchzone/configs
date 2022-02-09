@@ -1,0 +1,2 @@
+#!/bin/sh
+xrandr --fb 4000x2560 --output DP-4 --mode 2560x1440 --pos 0x1120 --primary  --output DP-3 --mode 2560x1440 --pos 2560x0 --rotate left --output eDP-1 --off
