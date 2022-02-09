@@ -7,6 +7,9 @@ fi
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/wutch/.oh-my-zsh"
+HISTFILE=~/.zsh_history
+HISTSIZE=999999999
+SAVEHIST=$HISTSIZE
 
 ZSH_THEME="robbyrussell"
 
@@ -109,8 +112,11 @@ alias la='exa -la'
 alias ..='cd ..'
 bindkey "^k" history-search-backward
 bindkey "^j" history-search-forward
+
+# Default
 export EDITOR="/bin/nvim"
 export BROWSER='/usr/bin/brave'
+export TERMINAL='/usr/bin/alacritty'
 
 export GOBIN="$(go env GOPATH)/bin"
 export GOPATH="$(go env GOPATH)"
