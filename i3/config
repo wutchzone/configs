@@ -30,7 +30,7 @@ bindsym $mod+Ctrl+m exec pavucontrol
 # printscreen
 bindsym Print exec xfce4-screenshooter
 #calendar
-bindsym F4 exec gsimplecal
+bindsym F1 exec gsimplecal
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down

@@ -1,4 +1,4 @@
-let mapleader = "\<Space>"
+lua require "global"
 
 " ============================================================================= 
 " plugins
@@ -15,7 +15,6 @@ Plug 'itchyny/lightline.vim'
 Plug 'morhetz/gruvbox'
 Plug 'machakann/vim-highlightedyank'
 Plug 'editorconfig/editorconfig-vim'
-" Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
 " Fuzzy finder
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -285,10 +284,6 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 
-" Formatting selected code.
-"xmap <leader>f  <Plug>(coc-format-selected)
-"nmap <leader>f  <Plug>(coc-format-selected)
-
 augroup mygroup
   autocmd!
   " Setup formatexpr specified filetype(s).
@@ -381,24 +376,13 @@ nnoremap <silent> <space>i  :call CocActionAsync('codeAction', '', 'Implement mi
 nnoremap <silent> <space>a  :CocAction<cr>
 
 " =============================================================================
-" custom settings"
+" spell checker
 " =============================================================================
-" " Disable the default Vim startup message.
-" set shortmess+=I
-" set number
-" set relativenumber
-" set laststatus=2
-" set backspace=indent,eol,start
-" set hidden
-" set ignorecase
-" set smartcase
-" 
-" " Enable searching as you type, rather than waiting till you press enter.
-" set incsearch
-" 
-" " Unbind some useless/annoying default key bindings.
-" nmap Q <Nop> " 'Q' in normal mode enters Ex mode. You almost never want this.
-" set noerrorbells visualbell t_vb=
-" set mouse+=a
+" spell languages
+set spelllang=en,cjk
+" Show nine spell checking candidates at most
+set spellsuggest=best,9
+nnoremap <silent> <F11> :set spell!<cr>
+inoremap <silent> <F11> <C-O>:set spell!<cr>
 
-
+nnoremap <leader>m <C-W>_<C-W><Bar><cr>

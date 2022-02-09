@@ -5,23 +5,10 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
 # Path to your oh-my-zsh installation.
 export ZSH="/home/wutch/.oh-my-zsh"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -120,14 +107,16 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 alias ls='exa'
 alias la='exa -la'
 alias ..='cd ..'
-alias docker='sudo docker'
+bindkey "^k" history-search-backward
+bindkey "^j" history-search-forward
+export EDITOR="/bin/nvim"
+export BROWSER='/usr/bin/brave'
 
 export GOBIN="$(go env GOPATH)/bin"
 export GOPATH="$(go env GOPATH)"
-export PATH="$GOBIN:$GOPATH:$PATH"
+export PATH="$HOME/.cargo/bin:$GOBIN:$GOPATH:$PATH"
 export EDITOR="/usr/bin/nvim"
 export BROWSER="/usr/bin/firefox"
-source $HOME/.cargo/env
 alias pls='sudo $(fc -ln -1)'
 
 setxkbmap -layout us -option ctrl:swapcaps

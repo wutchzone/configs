@@ -18,15 +18,6 @@
                 ".hg/"
             ]
         },
-        "rust": {
-            "command": "rust-analyzer",
-            "filetypes": [
-                "rust"
-            ],
-            "rootPatterns": [
-                "Cargo.toml"
-            ]
-        },
         "go": {
             "command": "gopls",
             "rootPatterns": [
