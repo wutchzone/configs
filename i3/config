@@ -28,7 +28,7 @@ bindsym $mod+q kill
 bindsym $mod+d exec --no-startup-id rofi -lines 5 -show drun
 bindsym $mod+Ctrl+m exec pavucontrol
 # printscreen
-bindsym Print exec xfce4-screenshooter
+bindsym Print exec "gnome-screenshot -a -f /tmp/screenshot; xclip -i -selection clipboard -target image/png < /tmp/screenshot"
 #calendar
 bindsym F1 exec gsimplecal
 # change focus
@@ -184,7 +184,7 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore; sleep 1; picom -b
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
-exec --no-startup-id xfce4-power-manager
+# exec --no-startup-id xfce4-power-manager
 exec --no-startup-id ibus-daemon --xim -d -r
 exec --no-startup-id unclutter -idle 5 # hide cursor after 5 seconds
 # default layout
