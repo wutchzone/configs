@@ -125,6 +125,6 @@ export EDITOR="/usr/bin/nvim"
 export BROWSER="/usr/bin/firefox"
 alias pls='sudo $(fc -ln -1)'
 
-setxkbmap -layout us -option ctrl:swapcaps
+#setxkbmap -layout us -option ctrl:swapcaps
 alias k=kubectl
 compdef __start_kubectl k
