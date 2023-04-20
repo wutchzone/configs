@@ -1,5 +1,3 @@
-# Set mod key (Mod1=<Alt>, Mod4=<Super>)
-
 ########################
 ### General settings ###
 ########################
@@ -144,12 +142,12 @@ for_window [class="Xfburn"] floating enable
 bindsym $mod+0 mode "$mode_system"
 set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id i3exit lock, mode "default"
-    bindsym s exec --no-startup-id i3exit suspend, mode "default"
+    bindsym l exec --no-startup-id xlock -m matrix, mode "default"
+    bindsym s exec --no-startup-id ~/.config/i3/suspend.bash, mode "default"
     bindsym u exec --no-startup-id i3exit switch_user, mode "default"
     bindsym e exec --no-startup-id i3exit logout, mode "default"
     bindsym h exec --no-startup-id i3exit hibernate, mode "default"
-    bindsym r exec --no-startup-id i3exit reboot, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
     bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
 
     # exit system mode: "Enter" or "Escape"
@@ -181,18 +179,12 @@ mode "resize" {
 #################
 exec --no-startup-id pa-applet
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nitrogen --restore; sleep 1; picom -b
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
-# exec --no-startup-id xfce4-power-manager
 exec --no-startup-id ibus-daemon --xim -d -r
 exec --no-startup-id unclutter -idle 5 # hide cursor after 5 seconds
 # default layout
-# exec --no-startup-id sh ~/dotfiles/screenlayout/$HOST.sh
-exec --no-startup-id start_conky_grey
-exec_always --no-startup-id ff-theme-util
-exec --no-startup-id ibus-daemon --xim -d -r
-exec --no-startup-id unclutter -idle 5 # hide cursor after 5 seconds
+exec_always --no-startup-id sh ~/.config/screenlayout/gondor.sh; sleep 1; nitrogen --restore
 
 ##########################
 ### Colors and theming ###
@@ -201,7 +193,7 @@ exec --no-startup-id unclutter -idle 5 # hide cursor after 5 seconds
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
 	i3bar_command i3bar
-	status_command i3status -c ~/dotfiles/i3/i3status.conf
+	status_command i3status -c ~/.config/i3/i3status.conf
 	position bottom
 
 	tray_output primary
@@ -217,8 +209,8 @@ bar {
 		separator  #666666
 
 #                          border  backgr. text
-		focused_workspace  #458588 #458587 #ebdbb2
-		active_workspace   #83a598 #83a598 #ebdbb2
+		focused_workspace  #FABD2F #FABD2F #282828
+		active_workspace   #D79921 #D79921 #282828
 		inactive_workspace #504945 #504945 #ebdbb2
 		urgent_workspace   #cc241d #fb4934 #282828
 	}
@@ -229,7 +221,7 @@ bindsym $mod+m bar mode toggle
 
 # Theme colors
 # Class					border	backgr. text	indic. 	child_border
-client.focused          #458588 #458588 #1d2021 #b16286	#d79921
+client.focused          #FABD2F #FABD2F #282828 #b16286	#D79921
 client.focused_inactive #1d2021 #1d2021 #d79921 #b16286
 client.unfocused        #1d2021 #1d2021 #d79921 #b16286
 client.urgent           #cc241d #cc241d #ffffff #cc241d
@@ -249,5 +241,5 @@ smart_gaps on
 
 # Smart borders (draw borders around container only if it is not the only container on this workspace) 
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
-smart_borders no_gaps
+smart_borders on
 
