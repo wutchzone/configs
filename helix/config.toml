@@ -1,0 +1,18 @@
+theme = "gruvbox"
+
+[editor]
+true-color = true
+line-number = "relative"
+
+[editor.indent-guides]
+render = true
+color-modes = true
+
+[keys.normal]
+";" = "command_mode"
+"space" = { w = ":w", ";" = "buffer_picker", c = ":clipboard-yank", b = { d = ":buffer-close"}, f = ":fmt", F = "file_picker" }
+K = "hover"
+
+[keys.insert]
+"C-space" = "completion"
+"C-j" = "normal_mode"
