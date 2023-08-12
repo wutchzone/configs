@@ -185,6 +185,7 @@ exec --no-startup-id ibus-daemon --xim -d -r
 exec --no-startup-id unclutter -idle 5 # hide cursor after 5 seconds
 # default layout
 exec_always --no-startup-id sh ~/.config/screenlayout/gondor.sh; sleep 1; nitrogen --restore
+exec_always sh setxkbmap -layout us,cz -variant ,qwerty -option grp:alt_space_toggle
 
 ##########################
 ### Colors and theming ###
