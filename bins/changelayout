@@ -1,6 +1,8 @@
 #!/bin/bash
 
-SELECTED="$(ls ~/.screenlayout | rofi -dmenu -p 'Change layout')"
+LAYOUT_DIR="$HOME/.config/screenlayout/"
 
-bash -c "~/.screenlayout/$SELECTED"
+SELECTED="$(ls $LAYOUT_DIR | rofi -dmenu -p 'Change layout')"
+
+bash -c "$LAYOUT_DIR$SELECTED"
 

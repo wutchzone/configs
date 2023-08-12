@@ -1,0 +1,18 @@
+#!/bin/bash
+
+set -euxo pipefail
+
+BASEPATH="/sys/class/backlight/intel_backlight/"
+BRIGHTNESS="brightness"
+MAX_BRIGHTNESS="max_brightness"
+
+FIVE_PERCENT=$(( `cat "$BASEPATH$MAX_BRIGHTNESS"` / 100 * 5))
+CURRENT=`cat "$BASEPATH$BRIGHTNESS"`
+
+OP="$1"
+
+if [[ "$OP" == "inc" ]]; then
+  echo $(($FIVE_PERCENT + $CURRENT)) > "$BASEPATH$BRIGHTNESS"
+elif [[ "$OP" == "dec" ]]; then
+  echo $(($CURRENT - $FIVE_PERCENT)) > "$BASEPATH$BRIGHTNESS"
+fi
