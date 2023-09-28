@@ -57,6 +57,9 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
+bindsym $mod+p exec changelayout
+bindsym XF86MonBrightnessUp exec "brightness inc"
+bindsym XF86MonBrightnessDown exec "brightness dec"
 
 set $ws1 1
 set $ws2 2
@@ -142,13 +145,11 @@ for_window [class="Xfburn"] floating enable
 bindsym $mod+0 mode "$mode_system"
 set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id xlock -m matrix, mode "default"
-    bindsym s exec --no-startup-id ~/.config/i3/suspend.bash, mode "default"
-    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
-    bindsym e exec --no-startup-id i3exit logout, mode "default"
-    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
-    bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+    bindsym l exec --no-startup-id ~/.config/i3/i3exit.bash lock, mode "default"
+    bindsym s exec --no-startup-id ~/.config/i3/i3exit.bash suspend, mode "default"
+    bindsym e exec --no-startup-id ~/.config/i3/i3exit.bash logout, mode "default"
+    bindsym r exec --no-startup-id ~/.config/i3/i3exit.bash reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id ~/.config/i3/i3exit.bash shutdown, mode "default"
 
     # exit system mode: "Enter" or "Escape"
     bindsym Return mode "default"
@@ -181,10 +182,9 @@ exec --no-startup-id pa-applet
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
-exec --no-startup-id ibus-daemon --xim -d -r
 exec --no-startup-id unclutter -idle 5 # hide cursor after 5 seconds
 # default layout
-exec_always --no-startup-id sh ~/.config/screenlayout/gondor.sh; sleep 1; nitrogen --restore
+exec_always sh ~/dotfiles/bins/set_default_layout; sleep 1; nitrogen --restore
 exec_always sh setxkbmap -layout us,cz -variant ,qwerty -option grp:alt_space_toggle
 
 ##########################
