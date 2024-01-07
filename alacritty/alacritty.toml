@@ -1,0 +1,31 @@
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 11.0
+
+[font.normal]
+family = "Noto Sans Mono"
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "V"
+mods = "Alt"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "C"
+mods = "Alt"
+
+[mouse]
+hide_when_typing = false
+
+[scrolling]
+history = 1000
+multiplier = 3
+
+[shell]
+program = "/usr/bin/zsh"
+
+[window]
+decorations = "full"
