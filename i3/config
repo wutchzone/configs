@@ -183,9 +183,8 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 exec --no-startup-id unclutter -idle 5 # hide cursor after 5 seconds
-# default layout
-exec_always sh ~/dotfiles/bins/set_default_layout; sleep 1; nitrogen --restore
-exec_always sh setxkbmap -layout us,cz -variant ,qwerty -option grp:alt_space_toggle
+exec_always ~/dotfiles/bins/set_default_layout; sleep 1; nitrogen --restore
+exec_always setxkbmap -layout us,cz -variant ,qwerty -option grp:alt_space_toggle
 
 ##########################
 ### Colors and theming ###
